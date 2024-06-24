@@ -38,6 +38,12 @@ Para rodar este projeto localmente, siga os passos abaixo:
    npm install nodemon --save-dev
    ```
 
+  No arquivo `package.json` em `scripts` adicione essa linha de código para o nodemon localizar o arquivo server.js e iniciar o Servidor com o comando `node start`.
+  
+  ```bash
+   "start": "nodemon ./src/server.js",
+  ```
+
 ## Configuração
 
 Antes de iniciar o servidor, é necessário configurar as variáveis de ambiente necessárias. Procure pelo arquivo co ma extensão `.env`( variaveis.env ) na raiz do projeto e configure as variáveis conforme necessário. Por exemplo:
