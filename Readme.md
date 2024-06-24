@@ -39,7 +39,7 @@ Para rodar este projeto localmente, siga os passos abaixo:
    ```
 
   No arquivo `package.json` em `scripts` adicione essa linha de código para o nodemon localizar o arquivo server.js e iniciar o Servidor com o comando `node start`.
-  
+
   ```bash
    "start": "nodemon ./src/server.js",
   ```
@@ -66,6 +66,19 @@ Após a instalação das dependências e configuração das variáveis de ambien
    ```
 
    Isso iniciará o servidor Node.js utilizando `nodemon`, que reiniciará automaticamente a aplicação sempre que houver mudanças nos arquivos.
+
+## Testando as Rotas
+
+ - `GET`  http://localhost:3000/api/carros
+   ** Lista todos carros cadastrados
+ - `GET`  http://localhost:3000/api/carro/1
+   ** Lista o carro cadastrado com código ID-1.
+ - `POST`  http://localhost:3000/api/carro
+   ** Envia um novo cadastro de carro no banco de dados.
+ - `PUT`  http://localhost:3000/api/carro/1
+   ** Faz uma alteração no cadastro de carro de código ID-1 no banco de dados.
+ - `DELETE` http://localhost:3000/api/carro/1
+   ** Deleta um cadastro de carro com o ID-1 no banco de dados.
 
 ## Estrutura do Projeto
 
