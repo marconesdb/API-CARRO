@@ -1,84 +1,133 @@
 ### README.md
 
 ```markdown
-# Projeto CRUD 
+# Projeto CRUD
 
-Este é um projeto Node.js que utiliza Express e MySQL.
+Este é um projeto Node.js que utiliza Express e MySQL para criar uma API CRUD de gerenciamento de carros.
 
 ## Instalação
 
 Para rodar este projeto localmente, siga os passos abaixo:
 
-1. **Clone o repositório**
+### 1. Clone o repositório
 
-   ```bash
-   git clone https://github.com/marconesdb/API-CARRO.git
-   cd API-CARRO
-   ```
+```bash
+git clone https://github.com/marconesdb/API-CARRO.git
 
-2. **Instale as dependências**
+``` 
+Navegue até a pasta API-CARROS com o comando:
 
-   Para instalar todas as dependências do projeto, você precisa ter o Node.js instalado. No terminal, execute:
+```bash
+cd API-CARRO
+```
+### 2. Instale as dependências
 
-   ```bash
-   # npm init -y
+Para instalar todas as dependências do projeto, você precisa ter o Node.js instalado. No terminal, execute:
 
-   # npm install express mysql dotenv cors body-parser
-   
-   ```
+```bash
+npm init -y
+```
 
-   Isso instalará todas as dependências listadas no arquivo `package.json`, incluindo `express`, `mysql`, `dotenv`, `cors`, `body-parser`.
+Depois: 
 
-3. **Instale o nodemon (dependência de desenvolvimento)**
+```bash
+npm install express mysql dotenv cors body-parser
+```
 
+Isso instalará todas as dependências listadas no arquivo `package.json`, incluindo `express`, `mysql`, `dotenv`, `cors`, `body-parser`.
 
-   `nodemon` é uma ferramenta que ajuda a desenvolver aplicativos baseados em Node.js reiniciando automaticamente a aplicação quando arquivos são modificados. Para instalar o `nodemon`, execute:
+### 3. Instale o nodemon (dependência de desenvolvimento)
 
-   ```bash
-   npm install nodemon --save-dev
-   ```
+`nodemon` é uma ferramenta que ajuda a desenvolver aplicativos baseados em Node.js reiniciando automaticamente a aplicação quando arquivos são modificados. Para instalar o `nodemon`, execute:
 
-  No arquivo `package.json` em `scripts` adicione essa linha de código para o nodemon localizar o arquivo server.js e iniciar o Servidor com o comando `node start`.
+```bash
+npm install nodemon --save-dev
+```
 
-  ```bash
-   "start": "nodemon ./src/server.js",
-  ```
+No arquivo `package.json`, em `scripts`, adicione ou verifique se já está com a linha de código abaixo para que o `nodemon` localize o arquivo `server.js` e inicie o servidor com o comando `npm start`:
+
+```json
+"start": "nodemon ./src/server.js"
+```
 
 ## Configuração
 
-Antes de iniciar o servidor, é necessário configurar as variáveis de ambiente necessárias. Procure pelo arquivo co ma extensão `.env`( variaveis.env ) na raiz do projeto e configure as variáveis conforme necessário. Por exemplo:
+Antes de iniciar o servidor, é necessário configurar as variáveis de ambiente. Crie um arquivo `.env` na raiz do projeto e configure as variáveis conforme necessário. Por exemplo:
 
-   ```
-   DB_HOST=localhost
-   DB_USER=seu_usuario
-   DB_PASSWORD=sua_senha
-   DB_DATABASE=nome_do_banco_de_dados
-   ```
+```
+DB_HOST=localhost
+DB_USER=seu_usuario
+DB_PASSWORD=sua_senha
+DB_DATABASE=nome_do_banco_de_dados
+```
 
-   Essas variáveis são utilizadas para configurar a conexão com o banco de dados MySQL.
+ Essas variáveis são utilizadas para configurar a conexão com o banco de dados MySQL.
 
+## Criando o Banco de Dados
+
+Crie o banco de dados com o comando:
+
+```sql
+CREATE DATABASE nome_do_banco_de_dados;
+```
+
+## Crie a tabela do Banco de Dados:
+
+```sql
+USE nome_do_banco_de_dados;
+
+CREATE TABLE nome_da_tabela (
+    codigo INT PRIMARY KEY AUTO_INCREMENT,
+    modelo VARCHAR(30),
+    placa VARCHAR(7)
+);
+```
+
+## Preencha seu Banco de Dados com cadastros, Ex:
+
+```sql
+INSERT INTO nome_da_tabela (modelo, placa) VALUES ('Toyota Corolla', 'HDP9645');
+INSERT INTO nome_da_tabela (modelo, placa) VALUES ('Fiat Cronos', 'HDP9645');
+```
+## Veja a tabela do Banco de Dados preenchida com o comando:
+
+```bash
+
+SELECT * FROM nome_da_tabela;
+
+```
+  
 ## Executando o Projeto
 
 Após a instalação das dependências e configuração das variáveis de ambiente, você pode iniciar o servidor localmente. Execute:
 
-   ```bash
-   npm start
-   ```
+```bash
+npm start
+```
 
-   Isso iniciará o servidor Node.js utilizando `nodemon`, que reiniciará automaticamente a aplicação sempre que houver mudanças nos arquivos.
+Isso iniciará o servidor Node.js utilizando `nodemon`, que reiniciará automaticamente a aplicação sempre que houver mudanças nos arquivos.
+
+Você verá no console do terminal a mensagem: 
+
+Servidor rodando em: http://localhost:3000
+Conectado ao Banco de Dados: nome_do_seu_banco_de_dados
 
 ## Testando as Rotas
 
- - `GET`  http://localhost:3000/api/carros
-   ** Lista todos carros cadastrados
- - `GET`  http://localhost:3000/api/carro/1
-   ** Lista o carro cadastrado com código ID-1.
- - `POST`  http://localhost:3000/api/carro
-   ** Envia um novo cadastro de carro no banco de dados.
- - `PUT`  http://localhost:3000/api/carro/1
-   ** Faz uma alteração no cadastro de carro de código ID-1 no banco de dados.
- - `DELETE` http://localhost:3000/api/carro/1
-   ** Deleta um cadastro de carro com o ID-1 no banco de dados.
+- **GET**: `http://localhost:3000/api/carros`  
+  Lista todos os carros cadastrados.
+
+- **GET**: `http://localhost:3000/api/carro/1`  
+  Lista o carro cadastrado com código ID-1.
+
+- **POST**: `http://localhost:3000/api/carro`  
+  Envia um novo cadastro de carro no banco de dados.
+
+- **PUT**: `http://localhost:3000/api/carro/1`  
+  Faz uma alteração no cadastro de carro de código ID-1 no banco de dados.
+
+- **DELETE**: `http://localhost:3000/api/carro/1`  
+  Deleta um cadastro de carro com o ID-1 no banco de dados.
 
 ## Estrutura do Projeto
 
